@@ -102,6 +102,7 @@ class Base(unittest.TestCase):
         message(">> CMAKE_C_FLAGS_DEBUG: ${CMAKE_C_FLAGS_DEBUG}")
         message(">> CMAKE_C_FLAGS_RELEASE: ${CMAKE_C_FLAGS_RELEASE}")
         message(">> CMAKE_SHARED_LINKER_FLAGS: ${CMAKE_SHARED_LINKER_FLAGS}")
+        message(">> CMAKE_MODULE_LINKER_FLAGS: ${CMAKE_MODULE_LINKER_FLAGS}")
         message(">> CMAKE_EXE_LINKER_FLAGS: ${CMAKE_EXE_LINKER_FLAGS}")
         message(">> CMAKE_CXX_STANDARD: ${CMAKE_CXX_STANDARD}")
         message(">> CMAKE_CXX_EXTENSIONS: ${CMAKE_CXX_EXTENSIONS}")
@@ -231,6 +232,7 @@ class WinTest(Base):
                 "CMAKE_C_FLAGS_DEBUG": "/Zi /Ob0 /Od /RTC1",
                 "CMAKE_C_FLAGS_RELEASE": "/O2 /Ob2 /DNDEBUG",
                 "CMAKE_SHARED_LINKER_FLAGS": "/machine:%s" % arch_flag,
+                "CMAKE_MODULE_LINKER_FLAGS": "/machine:%s" % arch_flag,
                 "CMAKE_EXE_LINKER_FLAGS": "/machine:%s" % arch_flag,
                 "CMAKE_CXX_STANDARD": cppstd,
                 "CMAKE_CXX_EXTENSIONS": "OFF",
@@ -315,6 +317,7 @@ class WinTest(Base):
                           "CMAKE_C_FLAGS_DEBUG": "-g",
                           "CMAKE_C_FLAGS_RELEASE": "-O3 -DNDEBUG",
                           "CMAKE_SHARED_LINKER_FLAGS": "-m64",
+                          "CMAKE_MODULE_LINKER_FLAGS": "-m64",
                           "CMAKE_EXE_LINKER_FLAGS": "-m64",
                           "CMAKE_CXX_STANDARD": cppstd,
                           "CMAKE_CXX_EXTENSIONS": "OFF",
@@ -376,6 +379,7 @@ class LinuxTest(Base):
                 "CMAKE_C_FLAGS_DEBUG": "-g",
                 "CMAKE_C_FLAGS_RELEASE": "-O3 -DNDEBUG",
                 "CMAKE_SHARED_LINKER_FLAGS": arch_str,
+                "CMAKE_MODULE_LINKER_FLAGS": arch_str,
                 "CMAKE_EXE_LINKER_FLAGS": arch_str,
                 "COMPILE_DEFINITIONS": defines,
                 # fPIC is managed automatically depending on the shared option value
@@ -433,6 +437,7 @@ class AppleTest(Base):
                 "CMAKE_C_FLAGS": "-m64",
                 "CMAKE_CXX_FLAGS": "-m64 -stdlib=libc++",
                 "CMAKE_SHARED_LINKER_FLAGS": "-m64",
+                "CMAKE_MODULE_LINKER_FLAGS": "-m64",
                 "CMAKE_EXE_LINKER_FLAGS": "-m64",
             })
         else:
